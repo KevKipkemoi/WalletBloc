@@ -87,6 +87,68 @@ class MyApp extends StatelessWidget {
 
     return app;
   }
+
+  Widget _getParamRoute(String name) {
+    if (name.startsWith("${routes.AddTransaction}")) {
+      List<String> ids = name.split("/");
+
+      int transactionId;
+      try {
+        transactionId = int.parse(ids[1]);
+        return AddTransaction(transactionId: transactionId);
+      } catch(e) {
+        print("No transaction ID $name");
+      }
+
+      int categoryId;
+      try {
+        categoryId = int.parse(ids[2]);
+        return AddTransaction(categoryId: categoryId);
+      } catch(e) {
+        print("No category ID $name");
+      }
+    }
+    
+    if (name.startsWith(routes.TransactionListAccount)) {
+      do {
+        List<String> splits = name.split(":");
+
+        if (splits.length != 2) break;
+
+        String title = splits[1];
+        String detail = splits[0];
+
+        String accountId = detail.replaceFirst("${routes.TransactionListAccount}/", "");
+
+        if (accountId == null || accountId.isEmpty) break;
+
+        try {
+          int id = int.parse(accountId);
+          return TransactionList(title, accountId: accountId);
+        } catch(e) {}
+      } while (false);
+    }
+
+    if (name.startsWith(routes.TransactionListCategory)) {
+      do {
+        List<String> splits = name.split(":");
+
+        if (splits.length != 2) break;
+
+        String title = splits[1];
+        String detail = splits[0];
+
+        String categoryId = detail.replaceFirst("${routes.TransactionListCategory}/", "");
+
+        if (categoryId == null || categoryId.isEmpty) break;
+
+        try {
+          int id = int.parse(categoryId);
+          return TransactionList(title, categoryId: id,);
+        } catch(e) {}
+      } while (false);
+    }
+  }
 }
 
 class LifecycleEventHandler extends WidgetsBindingObserver {
