@@ -88,3 +88,28 @@ class MyApp extends StatelessWidget {
     return app;
   }
 }
+
+class LifecycleEventHandler extends WidgetsBindingObserver {
+  LifecycleEventHandler(this.app, this.homeKey);
+
+  final MaterialApp app;
+  final GlobalKey<MyWalletState> homeKey;
+
+  @override
+  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
+    switch (state) {
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.paused:
+      case AppLifecycleState.suspending:
+        if (homeKey.currentContext != null) {
+          homeKey.currentState.onPaused();
+        }
+        break;
+      case AppLifecycleState.resumed:
+        if (homeKey.currentContext != null) {
+          homeKey.currentState.onResume();
+        }
+        break;
+    }
+  }
+}
