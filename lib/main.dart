@@ -196,6 +196,26 @@ class MyApp extends StatelessWidget {
         } catch(e) {}
       } while (false);
     }
+
+    if (name.startsWith(routes.Accounts)) {
+      do {
+        String data = name.replaceFirst("${routes.Accounts}/", "");
+
+        if (data == null) break;
+        if (data.isEmpty) break;
+
+        List<String> splits = data.split(":");
+
+        String strAccId = splits[0];
+        String accName = splits[1];
+
+        try {
+          int _accountId = int.parse(strAccId);
+
+          return AccountDetail(_accountId, accName);
+        } catch(e) {}
+      } while (false);
+    }
   }
 }
 
