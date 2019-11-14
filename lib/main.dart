@@ -171,6 +171,31 @@ class MyApp extends StatelessWidget {
         } catch(e) {}
       } while (false);
     }
+    
+    if (name.startsWith(routes.AddBudget)) {
+      do {
+        List<String> splits = name.split(":");
+
+        if (splits.length != 2) break;
+
+        String date = splits[1];
+        String title = splits[0];
+
+        if (date == null || date.isEmpty) break;
+
+        try {
+          int millisecondsSinceEpoch = int.parse(date);
+
+          DateTime day = DateTime.fromMicrosecondsSinceEpoch(millisecondsSinceEpoch);
+
+          return BudgetDetail(
+            "Budget",
+            categoryId: int.parse(title.replaceFirst("${routes.AddBudget}/", "")),
+            month: day,
+          );
+        }
+      }
+    }
   }
 }
 
