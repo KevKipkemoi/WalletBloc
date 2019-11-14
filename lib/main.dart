@@ -148,6 +148,29 @@ class MyApp extends StatelessWidget {
         } catch(e) {}
       } while (false);
     }
+
+    if (name.startsWith(routes.TransactionListDate)) {
+      do {
+        List<String> splits = name.split(":");
+
+        if (splits.length != 2) break;
+
+        String title = splits[1];
+        String detail = splits[0];
+
+        String date = detail.replaceFirst("${routes.TransactionListDate}/", "");
+
+        if (date == null || date.isEmpty) break;
+
+        try {
+          int millisecondsSinceEpoch = int.parse(date);
+
+          DateTime day = DateTime.fromMicrosecondsSinceEpoch(millisecondsSinceEpoch);
+
+          return TransactionList(title, day: day);
+        } catch(e) {}
+      } while (false);
+    }
   }
 }
 
