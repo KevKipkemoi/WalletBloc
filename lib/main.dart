@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -216,6 +217,52 @@ class MyApp extends StatelessWidget {
         } catch(e) {}
       } while (false);
     }
+    
+    if (name.startsWith(routes.TransferAccounts)) {
+      List<String> splits = name.split("/"); //  "$TransferAccount/from:$accountId/name:$accountName";;
+
+      // get account ID
+      var accID = int.parse(splits[1].split(":")[1]);
+      // get account name
+      var accName = splits[2].split(":")[1];
+
+      return AccountTransfer(accID, accName);
+    }
+    
+    if (name.startsWith(routes.Liability)) {
+      List<String> splits = name.split("/"); // "$TransferAccount/from:$accountId/name:$accountName";;
+
+      // get account ID
+      var accID = int.parse(splits[1].split(":")[1]);
+      // get account name
+      var accName = splits[2].split(":")[1];
+
+      return LiabilityView(accID, accName);
+    }
+
+    if (name.startsWith(routes.Pay)) {
+      List<String> splits = name.split("/"); // "$TransferAccount/from:$accountId/name:$accountName";;
+
+      // get account ID
+      var accID = int.parse(splits[1].split(":")[1]);
+      // get account name
+      var accName = splits[2].split(":")[1];
+
+      return PayLiability(accID, accName);
+    }
+
+    if (name.startsWith(routes.CreateCategory)) {
+      List<String> splits = name.split("/"); // "$TransferAccount/from:$accountId/name:$accountName";;
+
+      // get account ID
+      var accID = int.parse(splits[1].split(":")[1]);
+      // get account name
+      var accName = splits[2].split(":")[1];
+
+      return CreateCategory(id: accID, name: accName);
+    }
+
+    return null;
   }
 }
 
