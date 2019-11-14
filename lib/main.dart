@@ -193,8 +193,8 @@ class MyApp extends StatelessWidget {
             categoryId: int.parse(title.replaceFirst("${routes.AddBudget}/", "")),
             month: day,
           );
-        }
-      }
+        } catch(e) {}
+      } while (false);
     }
   }
 }
