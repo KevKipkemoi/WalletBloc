@@ -108,3 +108,25 @@ class Account {
     }
   );
 }
+
+class AppTransaction {
+  final int id;
+  final DateTime dateTime;
+  final int accountId;
+  final int categoryId;
+  final double amount;
+  final String desc;
+  final TransactionType type;
+  final String userUid;
+
+  AppTransaction(
+      this.id,
+      this.dateTime,
+      this.accountId,
+      this.categoryId,
+      this.amount,
+      this.desc,
+      this.type,
+      this.userUid
+  );
+}
