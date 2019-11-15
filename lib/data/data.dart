@@ -66,3 +66,18 @@ class TransactionType {
     return typeIncome.contains(type);
   }
 }
+
+class CategoryType {
+  final int id;
+  final String name;
+
+  CategoryType._(this.id, this.name);
+
+  static final expense = CategoryType._(0, "Expense");
+  static final income = CategoryType._(1, "Income");
+
+  static List<CategoryType> all = [
+    expense,
+    income
+  ];
+}
