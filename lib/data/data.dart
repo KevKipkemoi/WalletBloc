@@ -81,3 +81,30 @@ class CategoryType {
     income
   ];
 }
+
+class Account {
+  final int id;
+  final String name;
+  final double initialBalance;
+  final DateTime created;
+  final AccountType type;
+  final String currency;
+
+  double balance;
+  double spent;
+  double earn;
+
+  Account(
+      this.id,
+      this.name,
+      this.initialBalance,
+      this.type,
+      this.currency,
+    {
+      this.created,
+      this.balance,
+      this.spent,
+      this.earn
+    }
+  );
+}
