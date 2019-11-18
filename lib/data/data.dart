@@ -130,3 +130,26 @@ class AppTransaction {
       this.userUid
   );
 }
+
+class DischargeOfLiability extends AppTransaction {
+  final int liabilityId;
+
+  DischargeOfLiability(
+      int id,
+      DateTime dateTime,
+      this.liabilityId,
+      int accountId,
+      int categoryId,
+      double amount,
+      String userUid
+  ) : super(
+      id,
+      dateTime,
+      accountId,
+      categoryId,
+      amount,
+      "Discharge Of Liability",
+      TransactionType.dischargeOfLiability,
+      userUid
+  );
+}
