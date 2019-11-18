@@ -1,4 +1,4 @@
-
+import 'package:wallet_bloc/utils.dart' as Utils;
 class AccountType {
   final String name;
   final int id;
@@ -172,4 +172,28 @@ class AppCategory {
         this.expense = 0.0
       }
   );
+}
+
+class Budget {
+  final int id;
+  final int categoryId;
+  final double budgetPerMonth;
+  final DateTime _start;
+  final DateTime _end;
+
+  Budget(
+      this.id,
+      this.categoryId,
+      this.budgetPerMonth,
+      this._start,
+      this._end
+  );
+
+  DateTime get budgetStart => _start == null ? null : Utils.firstMomentOfMonth(_start);
+  DateTime get budgetEnd => _end == null ? null : Utils.lastDayOfMonth(_end);
+
+  @override
+  String toString() {
+    return "Budget $id for category $categoryId amount $budgetPerMonth from $budgetStart until $budgetEnd";
+  }
 }
