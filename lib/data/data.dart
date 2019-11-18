@@ -197,3 +197,26 @@ class Budget {
     return "Budget $id for category $categoryId amount $budgetPerMonth from $budgetStart until $budgetEnd";
   }
 }
+
+class User {
+  final String uuid;
+  final String email;
+  final String displayName;
+  final String photoUrl;
+  final int color;
+  final bool isVerified;
+
+  User(
+      this.uuid,
+      this.email,
+      this.displayName,
+      this.photoUrl,
+      this.color,
+      this.isVerified
+  );
+
+  @override
+  String toString() {
+    return "$email - $displayName - $color";
+  }
+}
