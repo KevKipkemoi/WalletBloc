@@ -237,3 +237,21 @@ class Home {
     return "$key - $host - $name";
   }
 }
+
+class Transfer {
+  final int id;
+  final int fromAccount;
+  final int toAccount;
+  final double amount;
+  final DateTime transferDate;
+  final String userUuid;
+
+  Transfer(
+      this.id,
+      this.fromAccount,
+      this.toAccount,
+      this.amount,
+      this.transferDate,
+      this.userUuid
+  );
+}
