@@ -1,4 +1,6 @@
 import 'package:wallet_bloc/utils.dart' as Utils;
+
+
 class AccountType {
   final String name;
   final int id;
