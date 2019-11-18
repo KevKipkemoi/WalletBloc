@@ -29,3 +29,10 @@ final _tableCategory = tableCategory;
 final _catName = "_name";
 final _catColorHex = "_colorHex";
 final _catCategoryType = "_type";
+
+// table Budget
+final _tableBudget = tableBudget;
+final _budgetCategoryId = "_catId";
+final _budgetPerMonth = "_budgetPerMonth";
+final _budgetStart = "_budgetStart";
+final _budgetEnd = "_budgetEnd";
