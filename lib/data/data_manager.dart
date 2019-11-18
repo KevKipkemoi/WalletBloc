@@ -1,3 +1,4 @@
+import 'package:wallet_bloc/data/data_observer.dart';
 
 // database manager
 final _id = "_id";
@@ -61,3 +62,34 @@ final _dischargeLiabilityId = "_liabilityId";
 final _dischargeCategory = "_categoryId";
 final _dischargeAmount = "_amount";
 final _dischargeUserId = "_dischargeUserUid";
+
+_Database db = _Database();
+
+Map<String, String> _tableMap = {
+  "Account": _tableAccounts,
+  "Transaction": _tableTransactions,
+  "Category": _tableCategory,
+  "User": _tableUser,
+  "Budget": _tableBudget,
+  "Transfer": _tableTransfer
+};
+
+void registerDatabaseObservable(List<String> tables, DatabaseObservable observable) {
+  db.registerDatabaseObservable(tables, observable);
+}
+
+void unregisterDatabaseObservable(List<String> tables, DatabaseObservable observable) {
+  db.unregisterDatabaseObservable(tables, observable);
+}
+
+Future<void> init() {
+  return db.init();
+}
+
+Future<void> resume() {
+  return init();
+}
+
+Future<void> dispose() {
+  return db.dispose();
+}
