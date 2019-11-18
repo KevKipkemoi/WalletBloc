@@ -36,3 +36,11 @@ final _budgetCategoryId = "_catId";
 final _budgetPerMonth = "_budgetPerMonth";
 final _budgetStart = "_budgetStart";
 final _budgetEnd = "_budgetEnd";
+
+// table User
+final _tableUser = tableUser;
+final _userDisplayName = "_displayName";
+final _userEmail = "_email";
+final _userPhotoUrl = "_photoUrl";
+final _userColor = "_userColor";
+final _userVerified = "_userVerified";
