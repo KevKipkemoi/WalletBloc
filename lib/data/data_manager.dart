@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:wallet_bloc/data/data_observer.dart';
 import 'package:wallet_bloc/data/data_observer.dart';
 
 // database manager
@@ -92,4 +96,45 @@ Future<void> resume() {
 
 Future<void> dispose() {
   return db.dispose();
+}
+
+// private data helper
+class _Database {
+  Database db;
+  Map<String, List<DatabaseObservable>> _watchers = {};
+  _PrivateDbHelper _privateDbHelper = _PrivateDbHelper();
+
+  Future<Database> _openDatabase() async {
+    String dbPath = join((await getApplicationDocumentsDirectory()).path, "MyWalletDb");
+
+    return await openDatabase(
+      dbPath,
+      version: 11,
+      onCreate: (Database db, int version) async {
+        await _privateDbHelper._executeCreateDatabase(db);
+      },
+      onUpgrade: (Database db, int oldVersion, int newVersion) async {
+        // Delete all tables and create anew
+        var allTables = [
+          _tableAccounts,
+          _tableTransactions,
+          _tableCategory,
+          _tableBudget,
+          _tableUser,
+          _tableTransfer,
+          _tableDischargeLiability
+        ];
+
+        for (String tbl in allTables) {
+          try {
+            await db.execute("DROP TABLE $tbl");
+          } catch(e, stacktrace) {
+            debugPrint(stacktrace.toString());
+          }
+        }
+
+        await _privateDbHelper._executeCreateDatabase(db);
+      }
+    );
+  }
 }
