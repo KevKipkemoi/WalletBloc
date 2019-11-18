@@ -220,3 +220,20 @@ class User {
     return "$email - $displayName - $color";
   }
 }
+
+class Home {
+  final String host;
+  final String key;
+  final String name;
+
+  Home(
+      this.host,
+      this.key,
+      this.name
+  );
+
+  @override
+  String toString() {
+    return "$key - $host - $name";
+  }
+}
