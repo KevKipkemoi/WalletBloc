@@ -153,3 +153,23 @@ class DischargeOfLiability extends AppTransaction {
       userUid
   );
 }
+
+class AppCategory {
+  final int id;
+  final String name;
+  final String colorHex;
+  final CategoryType categoryType;
+  double income;
+  double expense;
+
+  AppCategory(
+      this.id,
+      this.name,
+      this.colorHex,
+      this.categoryType,
+      {
+        this.income = 0.0,
+        this.expense = 0.0
+      }
+  );
+}
