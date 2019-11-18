@@ -44,3 +44,11 @@ final _userEmail = "_email";
 final _userPhotoUrl = "_photoUrl";
 final _userColor = "_userColor";
 final _userVerified = "_userVerified";
+
+// table MoneyTransfer
+final _tableTransfer = tableTransfer;
+final _transferFrom = "_transferFrom";
+final _transferTo = "_transferTo";
+final _transferAmount = "_transferAmount";
+final _transferDate = "_transferDate";
+final _transferUuid = "_uuid";
