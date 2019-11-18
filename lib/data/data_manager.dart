@@ -52,3 +52,12 @@ final _transferTo = "_transferTo";
 final _transferAmount = "_transferAmount";
 final _transferDate = "_transferDate";
 final _transferUuid = "_uuid";
+
+// table DischargeLiability
+final _tableDischargeLiability = tableDischargeLiability;
+final _dischargeDateTime = "_dateTime";
+final _dischargeFromAcc = "_accountId";
+final _dischargeLiabilityId = "_liabilityId";
+final _dischargeCategory = "_categoryId";
+final _dischargeAmount = "_amount";
+final _dischargeUserId = "_dischargeUserUid";
